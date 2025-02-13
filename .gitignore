@@ -1,0 +1,25 @@
+# ------------------ 一般檔案 ------------------
+.DS_Store
+.env
+*.log
+
+# ------------------ Python ------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+venv/
+env/
+.venv/
+
+# ------------------ Node / Vue ------------------
+node_modules/
+dist/
+*.local
+
+# ------------------ Docker ------------------
+# 如有自訂的 docker-compose override 檔案，可加入忽略
+docker-compose.override.yml
