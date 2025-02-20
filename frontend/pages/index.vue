@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <h1>記帳應用</h1>
-
     <!-- 新增記錄的表單 -->
     <form @submit.prevent="createAccount" class="account-form">
       <div>

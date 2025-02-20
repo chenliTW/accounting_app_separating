@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <header class="site-header">
-      <h1>記帳應用</h1>
+      <h1>教學範例計帳網頁 </h1>
     </header>
 
     <!-- Nuxt3 會根據路由載入各個頁面 -->
     <NuxtPage />
 
     <footer class="site-footer">
-      <p>&copy; 2025 記帳應用</p>
+      <p>&copy; 2025 GDG on Campus NCU</p>
     </footer>
   </div>
 </template>

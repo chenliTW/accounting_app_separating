@@ -1,9 +1,10 @@
 version: '3.8'
 
 services:
-  postgres: # 使用 postgres:14 這個官方的 image
-    image: postgres:14 
-    container_name: postgres 
+  postgres:
+    # 使用 postgres:14 這個官方的 image
+    image: postgres:14
+    container_name: postgres
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 12345
@@ -16,40 +17,39 @@ services:
     build: ./backend
     container_name: backend
     environment:
-      DATABASE_URL: "postgresql://your_user:your_password@postgres:5432/your_database"
+      DATABASE_URL: "postgresql://admin:12345@postgres:5432/accountint_app_seperating_db"
     ports:
       - "8000:8000"
     volumes:
-      - ./backend/app:/app/app  # 將本機程式碼掛載進容器
+      - ./backend/app:/app/app # 將本機程式碼掛載進容器
       - ./backend/requirements.txt:/app/requirements.txt
-    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    command: [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload" ]
     depends_on:
       - postgres
   frontend:
     build:
       context: ./frontend
     container_name: frontend
-    volumes: # 這行是為了讓容器內的程式碼可以透過 volume 即時更新 (hot-reloading)
+    volumes:
+      # 這行是為了讓容器內的程式碼可以透過 volume 即時更新 (hot-reloading)
       - ./frontend:/app/frontend/
     ports:
       - 3000:3000
     depends_on:
       - backend
 
-  
-  pgadmin: 
-    image: dpage/pgadmin4:latest
-    container_name: pgadmin
+  adminer:
+    image: adminer
+    container_name: adminer
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      ADMINER_DEFAULT_SERVER: postgres
     ports:
-      - "8080:80"
+      - "8080:8080"
     depends_on:
       - postgres
     volumes:
-      - pgadmin_data:/var/lib/pgadmin
+      - adminer_data:/var/lib/adminer
 
 volumes:
   postgres_data:
-  pgadmin_data:
+  adminer_data:
