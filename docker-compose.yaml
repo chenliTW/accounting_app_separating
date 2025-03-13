@@ -24,8 +24,7 @@ services:
       - ./backend/app:/app/app # 將本機程式碼掛載進容器
       - ./backend/requirements.txt:/app/requirements.txt
     command: [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload" ]
-    depends_on:
-      - postgres
+
   frontend:
     build:
       context: ./frontend
@@ -35,8 +34,6 @@ services:
       - ./frontend:/app/frontend/
     ports:
       - 3000:3000
-    depends_on:
-      - backend
 
   adminer:
     image: adminer
@@ -45,8 +42,6 @@ services:
       ADMINER_DEFAULT_SERVER: postgres
     ports:
       - "8080:8080"
-    depends_on:
-      - postgres
     volumes:
       - adminer_data:/var/lib/adminer
 
