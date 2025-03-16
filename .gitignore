@@ -24,3 +24,7 @@ dist/
 # ------------------ Docker ------------------
 # 如有自訂的 docker-compose override 檔案，可加入忽略
 docker-compose.override.yml
+
+# ------------------ DB ------------------
+# 忽略 db 資料夾
+postgres_data/

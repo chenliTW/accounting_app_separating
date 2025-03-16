@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+  
   postgres:
     # 使用 postgres:14 這個官方的 image
     image: postgres:14
@@ -10,9 +11,20 @@ services:
       POSTGRES_PASSWORD: 12345
       POSTGRES_DB: accounting_app_seperating_db
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data/
     ports:
       - "5432:5432"
+  
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    volumes:
+      # 這行是為了讓容器內的程式碼可以透過 volume 即時更新 (hot-reloading)
+      - ./frontend:/app/frontend/
+    ports:
+      - 3000:3000
+
   backend:
     build: ./backend
     container_name: backend
@@ -24,17 +36,9 @@ services:
       - ./backend/app:/app/app # 將本機程式碼掛載進容器
       - ./backend/requirements.txt:/app/requirements.txt
     command: [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload" ]
-
-  frontend:
-    build:
-      context: ./frontend
-    container_name: frontend
-    volumes:
-      # 這行是為了讓容器內的程式碼可以透過 volume 即時更新 (hot-reloading)
-      - ./frontend:/app/frontend/
-    ports:
-      - 3000:3000
-
+    depends_on:
+      - postgres
+  
   adminer:
     image: adminer
     container_name: adminer
@@ -46,5 +50,4 @@ services:
       - adminer_data:/var/lib/adminer
 
 volumes:
-  postgres_data:
   adminer_data:
