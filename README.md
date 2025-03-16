@@ -31,7 +31,7 @@
 
 2. 建立並啟動容器
     ```bash
-    docker-compose up --build
+    docker-compose up --d
     ```
 
 3. 確認服務是否啟動成功
