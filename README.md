@@ -31,13 +31,13 @@
 
 2. 建立並啟動容器
     ```bash
-    docker-compose up --d
+    docker-compose up -d
     ```
 
 3. 確認服務是否啟動成功
     - 前端應用程式應該可以透過 `http://localhost:3000` 訪問
-    - 後端 API 應該可以透過 `http://localhost:8000` 訪問
-    - PostgreSQL 資料庫應該可以透過 `localhost:5432` 訪問
+    - 後端 API 應該可以透過 `http://localhost:8000/docs` 訪問
+    - PostgreSQL 資料庫應該可以透過 `http://localhost:5432` 訪問
 
 ### 關閉容器
 
