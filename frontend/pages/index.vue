@@ -49,7 +49,7 @@ const newAccount = ref({
 // 讀取記錄
 const fetchAccounts = async () => {
   try {
-    const response = await fetch('http://localhost:8000/api/accounts')
+    const response = await fetch('http://localhost:80/api/accounts')
     if (response.ok) {
       accounts.value = await response.json()
     } else {
@@ -63,7 +63,7 @@ const fetchAccounts = async () => {
 // 新增記錄
 const createAccount = async () => {
   try {
-    const response = await fetch('http://localhost:8000/api/accounts', {
+    const response = await fetch('http://localhost:80/api/accounts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
