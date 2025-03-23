@@ -45,7 +45,7 @@ services:
     environment:
       ADMINER_DEFAULT_SERVER: postgres
     ports:
-      - "8080:8080"
+      - "80:80"
     volumes:
       - adminer_data:/var/lib/adminer
 
