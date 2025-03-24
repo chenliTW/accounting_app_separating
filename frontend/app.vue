@@ -3,9 +3,7 @@
     <header class="site-header">
       <h1>教學範例計帳網頁 </h1>
       <h2>podName: {{ config.public.POD_NAME }}</h2>
-      <h2>POD_NAMESPACE: {{ config.public.POD_NAMESPACE }}</h2>
       <h2>NodeName: {{ config.public.NODE_NAME }}</h2>
-      <h2>NodeIP: {{ config.public.NODE_IP }}</h2>
     </header>
 
     <!-- Nuxt3 會根據路由載入各個頁面 -->
