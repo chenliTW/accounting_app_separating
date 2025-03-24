@@ -2,6 +2,7 @@
   <div id="app">
     <header class="site-header">
       <h1>教學範例計帳網頁 </h1>
+      <h2>podName: {{ config.public.POD_NAME }}</h2>
     </header>
 
     <!-- Nuxt3 會根據路由載入各個頁面 -->
@@ -15,6 +16,7 @@
 
 <script setup>
 // 這裡可以加入全域性的邏輯或引入共用組件
+const config = useRuntimeConfig()
 </script>
 
 <style scoped>
